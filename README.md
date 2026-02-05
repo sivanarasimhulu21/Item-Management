@@ -34,7 +34,7 @@ Items-Management/<br>
  ├── pom.xml/<br>
  └── src/<br>
      └── main/<br>
-         ├── java/<br>/<br>/<br>
+         ├── java/<br>
          │   └── com.siva/<br>
          │       ├── ItemsManagementApplication.java/<br>
          │       ├── controller/<br>
