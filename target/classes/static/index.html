@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Management</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .card {
+            background: #ffffff;
+            width: 380px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 6px rgba(102,126,234,0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.4);
+        }
+
+        .divider {
+            margin: 25px 0;
+            height: 1px;
+            background: #eee;
+        }
+
+        pre {
+            background: #f4f6ff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            overflow-x: auto;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Add Item</h2>
+
+    <input id="id" placeholder="Item ID">
+    <input id="name" placeholder="Item Name">
+    <input id="desc" placeholder="Description">
+    <input id="price" placeholder="Price">
+
+    <button onclick="addItem()">Add Item</button>
+
+    <div class="divider"></div>
+
+    <h2>Get Item</h2>
+
+    <input id="searchId" placeholder="Enter Item ID">
+    <button onclick="getItem()">Get Item</button>
+
+    <pre id="result"></pre>
+
+</div>
+
+<script>
+function addItem() {
+    fetch('/items', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            id: document.getElementById('id').value,
+            name: document.getElementById('name').value,
+            description: document.getElementById('desc').value,
+            price: document.getElementById('price').value
+        })
+    }).then(res => res.text()).then(alert);
+}
+
+function getItem() {
+    let id = document.getElementById('searchId').value;
+    fetch('/items/' + id)
+        .then(res => res.json())
+        .then(data => document.getElementById('result').innerText =
+            JSON.stringify(data, null, 2));
+}
+</script>
+
+</body>
+</html>
