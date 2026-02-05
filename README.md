@@ -30,21 +30,21 @@ HTML, JavaScript
 Embedded Tomcat Server
 
 ## Project Structure
-Items-Management
- ├── pom.xml
- └── src
-     └── main
-         ├── java
-         │   └── com.siva
-         │       ├── ItemsManagementApplication.java
-         │       ├── controller
-         │       │   └── ItemController.java
-         │       └── model
-         │           └── Item.java
-         └── resources
-             ├── application.properties
-             └── static
-                 └── index.html
+Items-Management/<br>
+ ├── pom.xml/<br>
+ └── src/<br>
+     └── main/<br>
+         ├── java/<br>
+         │   └── com.siva/<br>
+         │       ├── ItemsManagementApplication.java/<br>
+         │       ├── controller/<br>
+         │       │   └── ItemController.java/<br>
+         │       └── model/<br>
+         │           └── Item.java/<br>
+         └── resources/<br>
+             ├── application.properties/<br>
+             └── static/<br>
+                 └── index.html/<br>
 
 ## How to Run the Application
 
